@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Setting TODOlist</title>
+  <script src="tailwind.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="bg-[url(gray-bg.png)]">
+
+  <header
+    class="flex items-center justify-center sticky top-0 h-[70px] bg-gray-800 items-center text-white font-mono text-2xl">
+    <div class="flex flex-shrink-0  cursor-pointer w-11 h-11 ">
+      <img class="w-11" src='icon2.webp'></img>
+    </div>&nbsp;TODOlist
+  </header>
+
+  <!-- component -->
+  <div class="bg-blue w-full py-[100px]  flex justify-center font-sans">
+    <div class="rounded bg-gray-400 w-[450px] p-2 ">
+      <div class="flex justify-between py-1">
+        <h3 class="text-sm font-mono">Setting</h3>
+        <i class="material-icons">settings</i>
+      </div>
+      <div class="text-sm mt-2 font-mono">
+
+        <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
+          Extension calendar visibilty :
+          <div class="text-grey-darker mt-2 ml-2 flex justify-between items-start">
+            <span class="text-xs flex items-center font-mono">
+              <!-- min-h360 min-w-500 max-w-800 min-h-450  -->
+              <div class="text-teal-900" ><i class="material-icons">calendar_month</i>Visible</div>&nbsp;
+              <input type="radio" name="radio" id="visCal"
+                class=" col-span-2 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3 " />
+            </span>
+            <span class="text-xs flex items-center font-mono">
+              <div class="text-teal-900"><i class="material-icons">calendar_month</i> not Visible</div>&nbsp;
+              <input type="radio" name="radio"id="noVisCal"
+                class=" col-span-2 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3 " />
+            </span>
+            
+          </div>
+
+        </div>
+
+      </div>
+      <div class="text-sm mt-2 font-mono">
+
+        <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
+          Created by - <a href="https://www.linkedin.com/in/harsh-singh-69523a193"
+            class="cursor-pointer text-indigo-500 hover:underline">Harsh Singh</a>
+          <div class="text-grey-darker mt-2 ml-2 flex justify-between items-start">
+            <span class="text-xs flex items-center font-mono">
+              <!-- min-h360 min-w-500 max-w-800 min-h-450  -->
+              This TodoList Extension is created in the participation of WOC (Winter Of Code)
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+  <!-- min-h360 min-w-500 max-w-800 min-h-450  -->
+
+  <script src="options.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+﻿{
+  "name": "Task2do",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "WOC To do list",
+  "permissions": [
+    "alarms",
+    "storage",
+    "identity",
+    "identity.email"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://script.google.com/macros/s/*"
+  ],
+  "action": {
+    "default_title": "Task2do",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "icon2.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["matches.css"],
+      "js": ["matches.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

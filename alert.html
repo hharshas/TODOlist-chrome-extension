@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="h-screen">
+
+
+<head>
+  <meta charset = "UTF-8">
+  <title>TODOAlarm</title>
+  <script src="tailwind.js"></script>
+</head>
+
+<body class=" bg-gray-800">
+  <div class="bg-blue h-screen  scale-75 font-sans flex justify-center items-center">
+    <!-- component -->
+
+  <div class="flex justify-center ">
+    <div class="max-w-sm bg-white px-3 pt-3 pb-1 shadow-lg transform hover:scale-105 transition duration-250 ">
+      <h3 class="mb-3 text-xl font-bold text-gray-800">TODOlist</h3>
+      <div class="relative">
+        <img class="w-full" src="icon2.png" />
+        
+      </div>
+      <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer" id="tsk">OOPS!!!!</h1>
+      <div class="my-4">
+        <div class="flex space-x-1 items-center">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span>
+          <p id="dat-tim"> Alarm time already passed</p>
+        </div>
+        <div class="flex space-x-1 items-center">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </span>
+          <p id="prior"> Alarm time already passed</p>
+        </div>
+        <div class="flex space-x-1 items-center">
+          <p id="chek"></p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+  
+
+  <script src="alert.js"></script>
+  
+</body>
+
+</html>

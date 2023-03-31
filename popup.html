@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="tailwind.js"></script>
+    <link rel="stylesheet" href="./toast/toast.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body style="width: 350px ; height: 350px ; overflow: hidden;">
+
+    <div class="bg-gray-800 h-screen w-screen flex items-center justify-center">
+        <div class="w-[300px] h-[300px] bg-gray-900 px-8 py-6 rounded-lg">
+            <div class="flex items-center justify-center  text-white cursor-pointer  h-11 font-black text-2xl">
+                <img class="w-11" src='icon2.webp'></img>
+            </div>
+            <div id="email_id"
+                class="flex items-center justify-center  text-white  cursor-pointer  h-11 font-black text-2xl uppercase">
+                PROFILE
+            </div>
+            <div class="grid grid-cols-2 gap-x-11 gap-y-2 " id="displayStats">
+                <div>
+                    <div class='rounded-lg bg-gray-700 mt-1 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-full text-gray-400 flex justify-center items-center font-mono text-xl'
+                        id="today_todo"></div>
+                    <label class="flex flex-col text-gray-400">Task Today ToDo</label>
+
+                </div>
+
+                <div>
+                    <div class='rounded-lg bg-gray-700 mt-1 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-full text-gray-400 flex justify-center items-center font-mono text-xl'
+                        id="alarms_active"></div>
+                    <label class="flex flex-col text-gray-400">Alarms Active</label>
+
+                </div>
+
+                <div>
+                    <div class='rounded-lg bg-gray-700 mt-2 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-full text-gray-400 flex justify-center items-center font-mono text-xl'
+                        id="task_done"></div>
+                    <label class="flex flex-col text-gray-400">Task Done</label>
+
+                </div>
+                <div>
+                    <div class='rounded-lg bg-gray-700 mt-1 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none w-full text-gray-400 flex justify-center items-center font-mono text-xl'
+                        id="left_todo"></div>
+                    <label class="flex flex-col text-gray-400">Task Left ToDo</label>
+                </div>
+
+            </div>
+
+            <!-- <div class="flex justify-between text-gray-400 pd-0">
+                <button id="showModal" onclick="showModal()">SIGN UP</button>
+            </div> -->
+            <button
+                class=" hover:-translate-y-0 hover:scale-105 duration-150 w-full mt-2 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/30  text-white font-semibold rounded-lg"
+                id="submit">My-TODO</button>
+        </div>
+
+
+
+        <div class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-opacity-50 hidden transition ease-in-out delay-150"
+            id="modal">
+
+        </div>
+
+        <div id="loadingDiv"
+            class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-opacity-50 transition ease-in-out delay-150">
+            <div id="gradLoad"
+                class=" bg-gradient-to-r from-transparent via-rose-100/10 to-transparent absolute h-screen w-full fixed">
+            </div> <!--grad to right trans]rose[trans-->
+            <div id="noNet"
+                class=" absolute h-screen w-full fixed flex justify-center items-center text-white font-bold uppercase hidden ">
+                <i class="material-icons block ">
+                    public_off
+                </i>&nbsp;
+                <div>No Internet</div>
+            </div>
+            <div class="w-[300px] h-[300px] bg-gray-900 px-8 py-6 rounded-lg">
+                <div class="flex items-center justify-center  text-white cursor-pointer  h-11 font-black text-2xl">
+                    <div
+                        class='rounded-lg bg-gray-700 mt-1 p-2 h-11 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-[25%] text-gray-400 text-center'>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center justify-center  text-white  cursor-pointer  h-11 font-black text-2xl uppercase">
+
+                </div>
+                <div class="grid grid-cols-2 gap-x-11 gap-y-2">
+                    <div>
+                        <div
+                            class='rounded-lg bg-gray-700 mt-1 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-full text-gray-400 text-center'>
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            class='rounded-lg bg-gray-700 mt-1 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-full text-gray-400 text-center'>
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            class='rounded-lg bg-gray-700 mt-2 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none  w-full text-gray-400 text-center'>
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            class='rounded-lg bg-gray-700 mt-1 p-2 h-9 focus:border-blue-500 focus:bg-gray-800 focus:outline-none w-full text-gray-400 text-l  text-center'>
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    class=" w-full mt-6 h-9 py-2 bg-teal-900 shadow-lg shadow-teal-900/50 text-white font-semibold rounded-lg"
+                    id="submit"></button>
+            </div>
+
+        </div>
+
+        <!-- toast -->
+
+        <div class="absolute right-0 top-0 m-5">
+
+            <div class="flex items-centre bg-gray-500 border-l-4 border-gray-700 py-2 px-3 shadow-md mb-2 hidden toast  bg-teal-500 shadow-lg shadow-teal-500/5"
+                id="toast_div">
+
+                <div class="text-white rounded-full  mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg>
+                </div>
+
+                <h2 class="text-white max-w-xs " id="toast">
+                    user logged in
+                </h2>
+            </div>
+            <div class="flex items-centre bg-gray-500 border-l-4 border-gray-700 py-2 px-3 shadow-md mb-2 hidden toast  bg-teal-500 shadow-lg shadow-teal-500/5"
+                id="toast_div2">
+
+                <div class="text-white rounded-full  mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+                </div>
+
+                <h2 class="text-white max-w-xs " id="toast2">
+                    user logged in
+                </h2>
+            </div>
+        </div>
+
+
+
+        <script src="firebase-app.js"></script>
+
+        <script src="firebase-auth.js"></script>
+        <script src="popup.js"></script>
+        <script src="main.js"></script>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

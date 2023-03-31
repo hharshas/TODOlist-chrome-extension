@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ToDO List</title>
+    <meta name="description" content="Manage Your DAily Activities">
+    <!-- info for the browser like link send sommewhere -->
+    <link rel="stylesheet" href="main.css">
+    <script src="tailwind.js"></script>
+    <link rel="stylesheet" href="./toast/toast.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://unpkg.com/fullcalendar-scheduler@5.1.0/main.min.css" rel="stylesheet"> -->
+    <!-- <link href="fullCalendar/main.min.css" rel="stylesheet"> -->
+
+</head>
+
+<body id="popup-size" style="width: 768px; height: 390px;">
+
+    <!-- min-h360 min-w-500 max-w-800 min-h-450  -->
+    <!-- navbar -->
+    <div class="h-screen w-full relative flex justify-between  ">
+
+        <!-- Sidebar -->
+
+        <div class="w-full h-full flex flex-col  p-2 bg-gray-800 ">
+            <!-- Header -->
+            <header class="  flex items-center sticky top-0   justify-between bg-gray-800">
+                <div class="flex flex-shrink-0 items-center text-white p-2 cursor-pointer w-11 h-11 font-mono text-2xl">
+                    <img class="w-11" src='icon2.webp'></img> &nbsp;TODOlist
+                </div>
+
+                <div class="flex flex-shrink-0 items-center md:space-x-10 max-md:space-x-4 text-white ml-5">
+                    <!-- Nome -->
+
+                    <div class=" text-white"><i id="settingBtn"
+                            class=" hover:rotate-45 transition duration-250 hover:scale-105  cursor-pointer  material-icons">settings</i></a>
+                    </div>
+
+                    <!-- Texto -->
+                    <div class="">
+                        <!-- Nome -->
+                        <div class="text-md bg-teal-500 font-semibold border-b-4 border-teal-700 text-white py-1 px-4 rounded flex justify-center items-center font-sans" id="showEmail">Unknown</div>
+                    </div>
+
+                    <!-- Foto -->
+                    <div class="h-6 w-6 rounded-full cursor-pointer bg-gray-200 border-2 border-blue-400"></div>
+                </div>
+            </header>
+
+            <div id="board" class="">
+                <div class="">
+
+                    <!-- todo input -->
+                    <div id="inputCard" class="peer rounded-[7px] bg-gray-600   px-3 py-2.5 mt-0 md-4 ml-3 mr-5 ">
+                        <div class="grid grid-cols-6  gap-0">
+                            <span
+                                class="font-sans text-sm font-normal text-blue-gray-700 py-2 font-semibold text-white text-center">To-do:</span>
+                            <input type="text" placeholder="Your Task"
+                                class=" col-span-2 text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3 ">
+                            <span
+                                class="font-sans text-sm font-normal text-blue-gray-700 py-2 font-semibold  text-white text-center">Priority:</span>
+                            <select
+                                class=" col-span-2 text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3">
+                                <option>P1</option>
+                                <option>P2</option>
+                                <option>P3</option>
+                                <option>P4</option>
+                            </select>
+                            <span
+                                class="font-sans text-sm font-normal text-blue-gray-700 py-2 font-semibold text-white text-center">Date:</span>
+                            <input type="date" id="dateInput"
+                                class="col-span-2 text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3">
+                            <span
+                                class="font-sans text-sm font-normal text-blue-gray-700 py-2 font-semibold text-white  text-center">Time:</span>
+                            <input type="time" id="timeInput"
+                                class="col-span-2 text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3">
+                        </div>
+                        <div class="flex justify-center">
+                            <button
+                                class="w-[70px] hover:-translate-y-0 hover:scale-105 duration-150  py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/30  text-white font-semibold rounded-lg"
+                                id="addBtn">Add</button>
+                        </div>
+                    </div>
+
+                    <div id="tableCard"
+                        class="peer rounded-[7px] border-2  border-blue-gray-200 border-t-transparent bg-[white] px-3 py-2.5 my-4 ml-3 mr-5  ">
+                        <div class="flex justify-end items-center">
+                            <button
+                                class="bg-gray-200 hover:bg-gray-300 text-[#343A40] font-semibold py-1 px-2  flex items-center border-r-2 border-gray-400"
+                                id="downloadBtn"><i class="material-icons">download</i>PDF</button>
+                            <label
+                                class="bg-gray-200 hover:bg-gray-300 text-[#343A40] font-semibold py-1 px-2 border-gray-400 border-r-2 flex items-center"><input
+                                    type="checkbox" id="shortListBtn"><i
+                                    class="material-icons">grading</i>Uncheck</label>
+                            <button
+                                class="bg-gray-200 hover:bg-gray-300 text-[#343A40] font-semibold py-1 px-2  flex items-center "
+                                id="sortBtn"><i class="material-icons">sort</i>Sort</button>
+                        </div>
+
+                        <!-- todo table -->
+                        <table id="todoTable" class="w-full mytable ">
+                            <tr
+                                class="text-md font-bold tracking-wide text-left bg-gray-600 uppercase border-b-4 border-[#212529]">
+                                <th class="pl-4"></th>
+                                <th class="px-2 py-3 text-center text-white">Date</th>
+                                <th class="px-2 py-3 text-center text-white">Time</th>
+                                <th class=" px-2 py-3 text-center text-white">To-do</th>
+                                <th class="py-3">
+                                    <select id="categoryFilter">
+                                        <option value="">All</option>
+                                        <option value="P1">P1</option>
+                                        <option value="P2">P2</option>
+                                        <option value="P3">P3</option>
+                                        <option value="P4">P4</option>
+                                    </select>
+                                </th>
+                                <th class=""></th>
+                                <th class=""></th>
+                                <th class=""></th>
+                                <th class=""></th>
+                            </tr>
+                            <div id="tbody_container">
+                                <tbody id="tbody"></tbody>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- calendar -->
+                <div id="calendarContainer" class=" z-1 peer rounded-[7px]  bg-[white] px-3 py-2.5 mr-6 max-md:hidden">
+                    <div id="calendar" class="bg-white max-md:hidden"></div><br>
+                    <div id="linkHolder" class=" grid grid-cols-10 grid-row-1">
+                        <div class="col-span-8">
+                            <textarea id="linkNote"
+                                class="peer shadow h-100px w-full resize-none rounded-[7px]  border-pink-300  bg-transparent  px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 border-2  outline-0 disabled:resize-none"></textarea>
+                        </div>
+
+                        <div class="col-span-2">
+
+                            <button
+                                class=" hover:-translate-y-0 hover:scale-105 duration-150 mx-2 py-1 my-1 px-3 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/30  text-white font-semibold rounded-lg"
+                                id="saveLink">Save</button>
+
+                            <button
+                                class="hover:-translate-y-0 hover:scale-105 duration-150 mx-2 py-1 my-1 px-3 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/30  text-white font-semibold rounded-lg"
+                                id="visitLink">Visit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- toast -->
+
+        <div class="fixed right-0 top-0 m-5 ">
+
+            <div class="flex items-centre bg-grey-500 border-l-4 border-blue-700 py-2 px-3 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] mb-2 hidden toast  bg-teal-500 "
+                id="toast_div">
+
+                <div class="text-white rounded-full  mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg>
+                </div>
+
+                <h2 class="text-white max-w-xs  " id="toast">
+                    user logged in
+                </h2>
+            </div>
+            <div class="flex items-centre bg-gray-500 border-l-4 border-gray-700 py-2 px-3 shadow-md mb-2 hidden toast  bg-teal-500 shadow-lg shadow-teal-500/5"
+                id="toast_div2">
+
+                <div class="text-white rounded-full  mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+                </div>
+
+                <h2 class="text-white max-w-xs " id="toast2">
+                    user logged in
+                </h2>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    
+
+    <script src="firebase-app.js"></script>
+    <script src="firebase-auth.js"></script>
+
+    <script src="fullCalendar/global.js"></script>
+
+    <script src="main.js"></script>
+    <script src="popup.js"></script>
+    <script src="html2pdf.bundle.min.js"></script>
+
+
+
+</body>
+
+</html>
