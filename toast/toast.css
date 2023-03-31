@@ -1,0 +1,24 @@
+.toast{
+    animation: toast .3s forwards;
+}
+@keyframes toast {
+    from{
+        opacity:0;
+        transform: translateX(100px)
+    }to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+#gradLoad{
+    animation: glide 1s linear infinite;
+}
+@keyframes glide {
+    0%{
+        left: -200px
+    }
+    100%{
+        left: +200px
+    }
+}
